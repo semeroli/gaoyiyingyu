@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>高一英语高频考点精粹</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a3658 0%, #2c3e6d 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #e6f0ff;
+            overflow-x: hidden;
+            padding: 20px;
+            position: relative;
+        }
+        
+        /* 动态字母背景 */
+        .letters-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><text fill="rgba(255,255,255,0.03)" x="10" y="40" transform="rotate(30)">Grammar</text><text fill="rgba(255,255,255,0.03)" x="100" y="150" transform="rotate(-15)">Tense</text><text fill="rgba(255,255,255,0.03)" x="50" y="180" transform="rotate(20)">Clause</text></svg>');
+            background-size: 800px 800px;
+            animation: floatLetters 50s linear infinite;
+            z-index: 0;
+            opacity: 0.7;
+        }
+        
+        @keyframes floatLetters {
+            0% { background-position: 0 0; }
+            100% { background-position: 2000px 0; }
+        }
+        
+        .container {
+            max-width: 1300px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .header {
+            margin-bottom: 60px;
+            position: relative;
+        }
+        
+        .header h1 {
+            font-size: 4.2rem;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #4db7fe, #a1d6ff, #4db7fe);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 20px rgba(77, 183, 254, 0.3);
+            position: relative;
+        }
+        
+        .header h1::before, .header h1::after {
+            content: "✧";
+            font-size: 3rem;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(77, 183, 254, 0.7);
+        }
+        
+        .header h1::before { left: -70px; animation: pulse 2s infinite; }
+        .header h1::after { right: -70px; animation: pulse 2s infinite 0.5s; }
+        
+        @keyframes pulse {
+            0% { opacity: 0.3; transform: translateY(-50%) scale(0.8); }
+            50% { opacity: 1; transform: translateY(-50%) scale(1.2); }
+            100% { opacity: 0.3; transform: translateY(-50%) scale(0.8); }
+        }
+        
+        .header p {
+            font-size: 1.4rem;
+            max-width: 800px;
+            margin: 30px auto 0;
+            line-height: 1.8;
+            color: #a1d6ff;
+            padding: 20px;
+            border-radius: 15px;
+            background: rgba(34, 60, 110, 0.4);
+            border: 1px solid rgba(77, 183, 254, 0.3);
+        }
+        
+        .quote {
+            font-style: italic;
+            font-size: 1.3rem;
+            margin: 40px auto;
+            color: #4db7fe;
+            padding: 20px 40px;
+            position: relative;
+            display: inline-block;
+            max-width: 700px;
+            font-family: 'Georgia', serif;
+            border-left: 3px solid #4db7fe;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .cards-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 35px;
+            perspective: 1500px;
+        }
+        
+        .card {
+            width: 380px;
+            height: 480px;
+            background: rgba(34, 52, 90, 0.85);
+            border-radius: 15px;
+            padding: 35px 30px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform-style: preserve-3d;
+            cursor: pointer;
+            border: 2px solid rgba(77, 183, 254, 0.5);
+            backdrop-filter: blur(5px);
+        }
+        
+        .card:hover {
+            transform: translateY(-25px) rotateX(10deg);
+            box-shadow: 0 25px 45px rgba(77, 183, 254, 0.3);
+        }
+        
+        .card-number {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            font-size: 2.8rem;
+            font-weight: bold;
+            color: rgba(77, 183, 254, 0.2);
+            z-index: 1;
+        }
+        
+        .card-icon {
+            font-size: 3.8rem;
+            color: #4db7fe;
+            margin-bottom: 25px;
+            text-shadow: 0 0 15px rgba(77, 183, 254, 0.4);
+            transition: all 0.4s;
+        }
+        
+        .card:hover .card-icon {
+            transform: scale(1.15);
+            text-shadow: 0 0 20px rgba(77, 183, 254, 0.7);
+        }
+        
+        .card-title {
+            font-size: 2rem;
+            margin-bottom: 25px;
+            color: #e6f0ff;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .card-title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(to right, transparent, #4db7fe, transparent);
+            transition: all 0.4s;
+        }
+        
+        .card:hover .card-title::after {
+            width: 150px;
+            background: linear-gradient(to right, transparent, #a1d6ff, transparent);
+        }
+        
+        .card-content {
+            font-size: 1.15rem;
+            line-height: 1.9;
+            text-align: left;
+            color: #c2e2ff;
+            height: 210px;
+            overflow: hidden;
+            position: relative;
+            padding: 10px 0;
+        }
+        
+        .card-content::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 40px;
+            background: linear-gradient(to bottom, rgba(34,52,90,0), rgba(34,52,90,0.9));
+        }
+        
+        .example {
+            font-family: 'Georgia', serif;
+            color: #a1d6ff;
+            padding: 15px;
+            margin: 15px 0;
+            text-align: center;
+            font-size: 1.15rem;
+            background: rgba(42, 75, 120, 0.3);
+            border-radius: 8px;
+            border-left: 3px solid #4db7fe;
+            border-right: 3px solid #4db7fe;
+        }
+        
+        .card-footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 20px;
+            background: rgba(42, 75, 120, 0.3);
+            backdrop-filter: blur(5px);
+            border-top: 1px solid rgba(77, 183, 254, 0.3);
+        }
+        
+        .tip-text {
+            font-weight: bold;
+            color: #4db7fe;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+        }
+        
+        .watermark {
+            position: absolute;
+            bottom: 15px;
+            left: 20px;
+            font-size: 5rem;
+            opacity: 0.03;
+            color: #e6f0ff;
+            z-index: 0;
+            transform: rotate(-25deg);
+            font-family: 'Georgia', serif;
+        }
+        
+        .nav-dots {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 40px;
+        }
+        
+        .dot {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #2c3e6d;
+            border: 2px solid #4db7fe;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .dot.active {
+            background: #4db7fe;
+            transform: scale(1.3);
+            box-shadow: 0 0 10px rgba(77, 183, 254, 0.5);
+        }
+        
+        .footer {
+            margin-top: 70px;
+            padding: 25px;
+            font-size: 1.1rem;
+            color: #7aa4c0;
+            border-top: 1px solid rgba(77, 183, 254, 0.3);
+            max-width: 800px;
+            margin: 70px auto 0;
+            letter-spacing: 1px;
+        }
+        
+        /* 动画效果 */
+        @keyframes fadeIn {
+            from { 
+                opacity: 0; 
+                transform: translateY(40px) rotate(2deg); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0) rotate(0); 
+            }
+        }
+        
+        .card {
+            animation: fadeIn 0.7s forwards;
+            opacity: 0;
+        }
+        
+        .card:nth-child(1) { animation-delay: 0.1s; }
+        .card:nth-child(2) { animation-delay: 0.2s; }
+        .card:nth-child(3) { animation-delay: 0.3s; }
+        .card:nth-child(4) { animation-delay: 0.4s; }
+        .card:nth-child(5) { animation-delay: 0.5s; }
+        .card:nth-child(6) { animation-delay: 0.6s; }
+        .card:nth-child(7) { animation-delay: 0.7s; }
+        .card:nth-child(8) { animation-delay: 0.8s; }
+        
+        /* 响应式设计 */
+        @media (max-width: 1300px) {
+            .cards-container {
+                gap: 30px;
+            }
+            
+            .card {
+                width: 360px;
+                height: 470px;
+            }
+        }
+        
+        @media (max-width: 1150px) {
+            .cards-container {
+                gap: 25px;
+            }
+            
+            .card {
+                width: 340px;
+                height: 460px;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .card {
+                width: calc(50% - 20px);
+                height: 490px;
+            }
+            
+            .header h1 {
+                font-size: 3.5rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .card {
+                width: 100%;
+                max-width: 500px;
+                height: 450px;
+            }
+            
+            .header h1 {
+                font-size: 3rem;
+            }
+            
+            .header h1::before, .header h1::after {
+                font-size: 2.5rem;
+            }
+            
+            .header h1::before { left: -50px; }
+            .header h1::after { right: -50px; }
+            
+            .header p {
+                font-size: 1.2rem;
+            }
+            
+            .quote {
+                font-size: 1.15rem;
+                padding: 15px 25px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 2.5rem;
+                letter-spacing: 3px;
+            }
+            
+            .header h1::before { left: -35px; }
+            .header h1::after { right: -35px; }
+            
+            .card {
+                height: 480px;
+            }
+            
+            .card-title {
+                font-size: 1.8rem;
+            }
+            
+            .quote {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="letters-bg"></div>
+    
+    <div class="container">
+        <div class="header">
+            <h1>高一英语高频考点</h1>
+            <p>基于高考命题大数据分析，提炼时态语态、从句结构等八大核心模块，覆盖90%高频考点</p>
+            <div class="quote">"The limits of my language mean the limits of my world." — Ludwig Wittgenstein</div>
+        </div>
+        
+        <div class="cards-container">
+            <!-- 卡片1：时态对比 -->
+            <div class="card">
+                <div class="card-number">01</div>
+                <div class="card-icon"><i class="fas fa-hourglass-half"></i></div>
+                <h2 class="card-title">时态对比</h2>
+                <div class="card-content">
+                    <p><strong>核心对比：</strong>现在完成时(已完成动作) vs 一般过去时(过去动作)</p>
+                    <p><strong>解题关键：</strong>根据时间状语区分：already/yet/before→完成时；yesterday/last week→过去时</p>
+                    <div class="example">She <u>has finished</u> her homework (already).<br>She <u>finished</u> her homework (yesterday).</div>
+                </div>
+                <div class="card-footer">
+                    <div class="tip-text">易错点：since+时间点需用完成时；for+时间段需用完成时</div>
+                </div>
+                <div class="watermark">Tense</div>
+            </div>
+            
+            <!-- 卡片2：被动语态 -->
+            <div class="card">
+                <div class="card-number">02</div>
+                <div class="card-icon"><i class="fas fa-exchange-alt"></i></div>
+                <h2 class="card-title">被动语态</h2>
+                <div class="card-content">
+                    <p><strong>核心结构：</strong>be + V<sub>过去分词</sub>，强调动作承受者</p>
+                    <p><strong>使用场景：</strong>动作执行者未知/不重要；客观事实描述；科技文体</p>
+                    <div class="example">The novel <u>was written</u> by Hemingway.<br>New students <u>are welcomed</u> at the ceremony.</div>
+                </div>
+                <div class="card-footer">
+                    <div class="tip-text">注意：感官动词/使役动词被动需加to (make→be made to do)</div>
+                </div>
+                <div class="watermark">Voice</div>
+            </div>
+            
+            <!-- 卡片3：情态动词 -->
+            <div class="card">
+                <div class="card-number">03</div>
+                <div class="card-icon"><i class="fas fa-balance-scale"></i></div>
+                <h2 class="card-title">情态动词</h2>
+                <div class="card-content">
+                    <p><strong>核心功能：</strong>可能性(can/may) | 必要性(must/should) | 能力(can/could)</p>
+                    <p><strong>特殊用法：</strong>must表推测只用于肯定句；can't表不可能推测</p>
+                    <div class="example">You <u>must be</u> tired after the journey.<br>It <u>can't be</u> John—he's in Paris now.</div>
+                </div>
+                <div class="card-footer">
+                    <div class="tip-text">考点：need/dare作情态动词与实义动词的转换</div>
+                </div>
+                <div class="watermark">Modal</div>
+            </div>
+            
+            <!-- 卡片4：从句结构 -->
+            <div class="card">
+                <div class="card-number">04</div>
+                <div class="card-icon"><i class="fas fa-link"></i></div>
+                <h2 class="card-title">从句结构</h2>
+                <div class="card-content">
+                    <p><strong>三大从句：</strong>定语从句(that/which/who) | 名词从句(that/whether) | 状语从句(when/if)</p>
+                    <p><strong>难点突破：</strong>非限制性定语从句用逗号隔开；whether可引导主语从句</p>
+                    <div class="example">The book <u>that</u> you lent me is fascinating.<br><u>Whether</u> he will come is unknown.</div>
+                </div>
+                <div class="card-footer">
+                    <div class="tip-text">易混点：where引导定语从句(修饰地点) vs 状语从句(表位置)</div>
+                </div>
+                <div class="watermark">Clause</div>
+            </div>
+            
+            <!-- 卡片5：非谓语动词 -->
+            <div class="card">
+                <div class="card-number">05</div>
+                <div class="card-icon"><i class="fas fa-infinity"></i></div>
+                <h2 class="card-title">非谓语动词</h2>
+                <div class="card-content">
+                    <p><strong>三大形式：</strong>不定式(to do) | 动名词(doing) | 分词(doing/done)</p>
+                    <p><strong>功能区分：</strong>不定式表目的/未来；动名词表习惯/经历；分词表伴随状态</p>
+                    <div class="example"><u>To master</u> English, practice daily.<br>I enjoy <u>reading</u> novels.</div>
+                </div>
+                <div class="card-footer">
+                    <div class="tip-text">重点：分词作定语时，现在分词表主动，过去分词表被动</div>
+                </div>
+                <div class="watermark">Verbals</div>
+            </div>
+            
+            <!-- 卡片6：介词短语 -->
+            <div class="card">
+                <div class="card-number">06</div>
+                <div class="card-icon"><i class="fas fa-random"></i></div>
+                <h2 class="card-title">介词短语</h2>
+                <div class="card-content">
+                    <p><strong>高频搭配：</strong>depend on | be fond of | in spite of | by means of</p>
+                    <p><strong>易混辨析：</strong>in the tree(外来物) vs on the tree(生长物)；in time(及时) vs on time(准时)</p>
+                    <div class="example">The bird is <u>in the tree</u>.<br>Apples grow <u>on the tree</u>.</div>
+                </div>
+                <div class="card-footer">
+                    <div class="tip-text">考点：三词短语如 look forward to / put up with 中的to为介词</div>
+                </div>
+                <div class="watermark">Prep.</div>
+            </div>
+            
+            <!-- 卡片7：特殊句型 -->
+            <div class="card">
+                <div class="card-number">07</div>
+                <div class="card-icon"><i class="fas fa-exclamation"></i></div>
+                <h2 class="card-title">特殊句型</h2>
+                <div class="card-content">
+                    <p><strong>四大结构：</strong>倒装句(Only then did I...) | 强调句(It is...that) | 虚拟语气(if I were...) | there be</p>
+                    <p><strong>倒装规则：</strong>否定词开头(never/seldom)需部分倒装</p>
+                    <div class="example"><u>Only when</u> he left <u>did I realize</u> the truth.<br><u>It was</u> yesterday <u>that</u> we met.</div>
+                </div>
+                <div class="card-footer">
+                    <div class="tip-text">虚拟语气：与现在事实相反→if+过去时，主句would/could+do</div>
+                </div>
+                <div class="watermark">Special</div>
+            </div>
+            
+            <!-- 卡片8：核心词汇 -->
+            <div class="card">
+                <div class="card-number">08</div>
+                <div class="card-icon"><i class="fas fa-book"></i></div>
+                <h2 class="card-title">核心词汇</h2>
+                <div class="card-content">
+                    <p><strong>高频词汇：</strong>survive | admit | ignore | concern | argue | treat</p>
+                    <p><strong>短语搭配：</strong>come about | make sense | care about | go through | in order to</p>
+                    <div class="example">How did the accident <u>come about</u>?<br>His explanation doesn't <u>make sense</u>.</div>
+                </div>
+                <div class="card-footer">
+                    <div class="tip-text">易错：affect(动词) vs effect(名词)；lie(躺) vs lay(放置)</div>
+                </div>
+                <div class="watermark">Words</div>
+            </div>
+        </div>
+        
+        <div class="nav-dots">
+            <div class="dot active"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+        
+        <div class="footer">
+            <p>高考命题规律：语法填空（15分） | 阅读理解（40分） | 完形填空（30分） | 作文（25分） | 考点重合率85%</p>
+        </div>
+    </div>
+    
+    <script>
+        // 3D悬停效果
+        const cards = document.querySelectorAll('.card');
+        
+        cards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const angleY = (x - centerX) / 25;
+                const angleX = (centerY - y) / 25;
+                
+                card.style.transform = `perspective(1500px) rotateX(${angleX}deg) rotateY(${angleY}deg) translateY(-25px)`;
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1500px) rotateX(0) rotateY(0) translateY(0)';
+            });
+        });
+        
+        // 轮播导航
+        const dots = document.querySelectorAll('.dot');
+        const cardContainer = document.querySelector('.cards-container');
+        
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                dots.forEach(d => d.classList.remove('active'));
+                dot.classList.add('active');
+                
+                cardContainer.scrollTo({
+                    left: index * (cardContainer.scrollWidth / dots.length),
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // 自动轮播
+        let currentSlide = 0;
+        
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % dots.length;
+            dots.forEach((d, i) => {
+                d.classList.toggle('active', i === currentSlide);
+            });
+            
+            cardContainer.scrollTo({
+                left: currentSlide * (cardContainer.scrollWidth / dots.length),
+                behavior: 'smooth'
+            });
+        }
+        
+        setInterval(nextSlide, 10000);
+    </script>
+</body>
+</html>
